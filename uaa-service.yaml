@@ -1,12 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
   labels:
-    io.kompose.service: uaa
+    service: uaa
   name: uaa
 spec:
   ports:
@@ -15,6 +11,4 @@ spec:
       targetPort: 8080
   type: LoadBalancer
   selector:
-    io.kompose.service: uaa
-status:
-  loadBalancer: {}
+    service: uaa

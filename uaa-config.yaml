@@ -64,18 +64,5 @@ data:
           -----END RSA PRIVATE KEY-----
 kind: ConfigMap
 metadata:
-  creationTimestamp: "2021-07-21T16:55:45Z"
-  managedFields:
-  - apiVersion: v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:data:
-        .: {}
-        f:uaa.yml: {}
-    manager: kubectl-create
-    operation: Update
-    time: "2021-07-21T16:55:45Z"
   name: uaa-config
   namespace: default
-  resourceVersion: "8101908"
-  uid: 6e5750b6-fd5c-4e97-a86b-82b77fe7861a
