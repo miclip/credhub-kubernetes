@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: uaa
+  name: uaa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: uaa
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: uaa
+    spec:
+      containers:
+        - image: pcfseceng/uaa
+          name: uaa
+          ports:
+            - containerPort: 8080
+          resources: {}
+          volumeMounts:
+            - mountPath: /uaa/uaa.yml
+              name: uaa-claim0
+      restartPolicy: Always
+      volumes:
+        - name: uaa-claim0
+          persistentVolumeClaim:
+            claimName: uaa-claim0
+status: {}

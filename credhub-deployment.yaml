@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: credhub
+  name: credhub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: credhub
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: credhub
+    spec:
+      containers:
+        - env:
+            - name: UAA_INTERNAL_URL
+              value: http://uaa:8080/uaa
+            - name: UAA_URL
+              value: http://localhost:8080/uaa
+          image: orangeopensource/credhub
+          name: credhub
+          ports:
+            - containerPort: 9000
+          resources: {}
+      restartPolicy: Always
+status: {}
