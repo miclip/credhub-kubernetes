@@ -31,11 +31,11 @@ spec:
             - containerPort: 8080
           resources: {}
           volumeMounts:
-            - mountPath: /uaa/uaa.yml
-              name: uaa-claim0
+            - mountPath: /uaa
+              name: uaa-config
       restartPolicy: Always
       volumes:
-        - name: uaa-claim0
-          persistentVolumeClaim:
-            claimName: uaa-claim0
+        - name: uaa-config
+          configMap:
+            name: uaa-config
 status: {}

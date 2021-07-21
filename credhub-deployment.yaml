@@ -28,7 +28,7 @@ spec:
             - name: UAA_INTERNAL_URL
               value: http://uaa:8080/uaa
             - name: UAA_URL
-              value: http://localhost:8080/uaa
+              value: http://a65b2efe0dda6423d9307eae10cd397b-596113359.us-east-2.elb.amazonaws.com:8080/uaa
           image: orangeopensource/credhub
           name: credhub
           ports:
