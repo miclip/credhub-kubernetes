@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
   labels:
     service: credhub
   name: credhub
@@ -20,7 +19,9 @@ spec:
             - name: UAA_INTERNAL_URL
               value: http://uaa:8080/uaa
             - name: UAA_URL
-              value: http://[UPDATE DNS]:8080/uaa
+              value: https://uaa.ci.miclip.io/uaa
+            - name: SERVER_SSL_ENABLED
+              value: "false"
           image: orangeopensource/credhub
           name: credhub
           ports:

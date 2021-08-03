@@ -1,15 +1,27 @@
 apiVersion: v1
 data:
   uaa.yml: |
+    url: https://uaa.ci.miclip.io
+    zones:
+      internal:
+        hostnames: []
     scim:
       users:
         - credhub|password|credhub|Credhub|User|credhub.read,credhub.write
+        - admin|password|scim.write,scim.read,openid
     oauth:
       clients:
+        concourse:
+          access-token-validity: 1200
+          authorized-grant-types: authorization_code,refresh_token
+          override: true
+          redirect-uri: "https://concourse.ci.miclip.io/sky/issuer/callback"
+          refresh-token-validity: 3600
+          scope: openid,email,profile,roles
+          secret: secret
         credhub_cli:
           override: true
           authorized-grant-types: password,refresh_token
-          # scopes the client may receive
           scope: credhub.read,credhub.write
           authorities: uaa.resource
           access-token-validity: 86400 # 1 day

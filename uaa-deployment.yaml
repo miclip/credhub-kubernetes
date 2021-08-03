@@ -9,8 +9,6 @@ spec:
   selector:
     matchLabels:
       service: uaa
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:

@@ -1,6 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    projectcontour.io/upstream-protocol.tls: "9000"
   labels:
     service: credhub
   name: credhub
@@ -9,6 +11,5 @@ spec:
     - name: "9000"
       port: 9000
       targetPort: 9000
-  type: LoadBalancer
   selector:
     service: credhub
